@@ -152,7 +152,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Name_Here
 --- !u!1 &4248353935680084419
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -309,7 +309,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 6051330168894519922}
   - component: {fileID: 6051330168894519933}
   - component: {fileID: 6051330168894519932}
+  - component: {fileID: 6138599488076481493}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -431,7 +432,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6051330168894520006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41e59183461cf1547a4c517a89944e8f, type: 3}
   m_Name: 
@@ -442,6 +443,18 @@ MonoBehaviour:
   playerNameText: {fileID: 1239930000347990093}
   playerName: 
   playerColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &6138599488076481493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051330168894520006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44de6449b01f23408c18d8c6743edb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7582494063426365099
 GameObject:
   m_ObjectHideFlags: 0

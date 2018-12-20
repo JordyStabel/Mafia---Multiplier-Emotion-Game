@@ -25,7 +25,7 @@ public class Player : NetworkBehaviour
             playerName = GUI.TextField(new Rect(25, Screen.height - 40, 100, 30), playerName);
             if (GUI.Button(new Rect(130, Screen.height - 40, 80, 30), "Change"))
             {
-                CmdChangeName();
+                CmdChangeName(playerName);
             }
         }
     }
@@ -44,7 +44,6 @@ public class Player : NetworkBehaviour
         }
         playerGraphics.GetComponent<Image>().color = playerColor;
         playerNameText.text = playerName;
-        
     }
 
     public void OnEnable()
@@ -60,11 +59,19 @@ public class Player : NetworkBehaviour
         {
             // Move to the right
             if (Input.GetKey(KeyCode.D))
-                playerContainer.transform.Translate(Vector3.right * Time.deltaTime * 30f);
+                playerContainer.transform.Translate(Vector3.right * Time.deltaTime * 50f);
 
             // Move to the left
             if (Input.GetKey(KeyCode.A))
-                playerContainer.transform.Translate(Vector3.left * Time.deltaTime * 30f);
+                playerContainer.transform.Translate(Vector3.left * Time.deltaTime * 50f);
+
+            // Move up
+            if (Input.GetKey(KeyCode.W))
+                playerContainer.transform.Translate(Vector3.up * Time.deltaTime * 50f);
+
+            // Move down
+            if (Input.GetKey(KeyCode.S))
+                playerContainer.transform.Translate(Vector3.down * Time.deltaTime * 50f);
 
             // Debug
             if (Input.GetKey(KeyCode.Space))
@@ -73,9 +80,9 @@ public class Player : NetworkBehaviour
     }
 
     [Command]
-    public void CmdChangeName()
+    public void CmdChangeName(string name)
     {
-        playerNameText.text = playerName;
+        playerNameText.text = name;
     }
 
 
