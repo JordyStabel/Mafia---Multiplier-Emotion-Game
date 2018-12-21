@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class SpritePlayer : NetworkBehaviour
 {
     float speed = 5f;
+    public Text playerNameText;
 
-    //[SyncVar]
+    [SyncVar]
     public string playerName = "Player";
 
-    //[SyncVar]
+    [SyncVar]
     public Color playerColor = Color.white;
 
     public void OnGUI()
@@ -20,7 +22,10 @@ public class SpritePlayer : NetworkBehaviour
             GUI.Label(new Rect(transform.position.x, transform.position.y, 100, 20), playerName);
             if (GUI.Button(new Rect(130, Screen.height - 40, 80, 30), "Change"))
             {
-                CmdChangeName(playerName);
+                if (isLocalPlayer)
+                    CmdChangeName(playerName);
+                else if (isServer)
+                    RpcChangeName(playerName);
             }
         }
     }
@@ -39,36 +44,45 @@ public class SpritePlayer : NetworkBehaviour
 
         SpriteRenderer render = GetComponent<SpriteRenderer>();
         render.color = playerColor;
-
-        if (isLocalPlayer)
-        {
-            //playerNameText.text = playerName;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Move to the right
-        if (Input.GetKey(KeyCode.D))
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
+        #region Replaced with Movement script
 
-        // Move to the left
-        if (Input.GetKey(KeyCode.A))
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        //// Move to the right
+        //if (Input.GetKey(KeyCode.D))
+        //    transform.Translate(Vector3.right * Time.deltaTime * speed);
 
-        // Move up
-        if (Input.GetKey(KeyCode.W))
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
+        //// Move to the left
+        //if (Input.GetKey(KeyCode.A))
+        //    transform.Translate(Vector3.left * Time.deltaTime * speed);
 
-        // Move down
-        if (Input.GetKey(KeyCode.S))
-            transform.Translate(Vector3.down * Time.deltaTime * speed);
+        //// Move up
+        //if (Input.GetKey(KeyCode.W))
+        //    transform.Translate(Vector3.up * Time.deltaTime * speed);
+
+        //// Move down
+        //if (Input.GetKey(KeyCode.S))
+        //    transform.Translate(Vector3.down * Time.deltaTime * speed);
+
+        #endregion
     }
 
     [Command]
     public void CmdChangeName(string name)
     {
         playerName = name;
+        playerNameText.text = playerName;
+
+        RpcChangeName(playerName);
+    }
+
+    [ClientRpc]
+    public void RpcChangeName(string name)
+    {
+        playerName = name;
+        playerNameText.text = playerName;
     }
 }

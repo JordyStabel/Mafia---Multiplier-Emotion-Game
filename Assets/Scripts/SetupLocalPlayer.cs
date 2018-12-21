@@ -1,12 +1,14 @@
-﻿using UnityEngine.Networking;
+﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public class SetupLocalPlayer : NetworkBehaviour
 {
+
     void Start()
     {
         if (isLocalPlayer)
-            GetComponent<SpritePlayer>().enabled = true;
+            GetComponent<Movement>().enabled = true;
         else
-            GetComponent<SpritePlayer>().enabled = false;
+            GetComponent<Movement>().enabled = false;
     }
 }

@@ -211,13 +211,7 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
-      propertyPath: m_GamePlayerPrefab
-      value: 
-      objectReference: {fileID: 9087074785285634918, guid: eaca91a5060231e49b11a38f986df2d1,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 3755432447665557844, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 3}
 --- !u!1 &971816529
 GameObject:
