@@ -14,7 +14,9 @@ public class Affdex2Slider : ImageResultsListener
     // Emotion value, that can be accessed form other scripts
     public float EmotionValue { get; protected set; }
 
-    public static float emotionValue;
+    public float emotionValue;
+
+    private float timeLeft = 1f;
 
     // Creating an instance of 'Affdex2Slider' which is accessible from all classes
     public static Affdex2Slider Instance { get; protected set; }
@@ -30,15 +32,28 @@ public class Affdex2Slider : ImageResultsListener
             StartCoroutine(SetEmotionStateWhenReady());
         }
         // Setting the instance equal to this current one (with check)
-        //if (Instance != null)
-        //    Debug.LogError("There shouldn't be two controllers.");
-        //else
-        //    Instance = this;
+        if (Instance != null)
+            Debug.LogError("There shouldn't be two controllers.");
+        else
+            Instance = this;
+    }
+
+    public void ChangeSlider(float value)
+    {
+        slider.value = value;
     }
 
     private void Update()
     {
-        emotionValue++;
+        // Testing
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            EmotionValue = Random.Range(0f, 1f);
+            emotionValue = EmotionValue;
+            //slider.value = EmotionValue;
+            timeLeft = 1f;
+        }
     }
 
     IEnumerator SetEmotionStateWhenReady()

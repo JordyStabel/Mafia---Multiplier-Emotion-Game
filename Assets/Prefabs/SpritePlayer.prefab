@@ -172,7 +172,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 6947571197313535186}
+  slider: {fileID: 6786901672417007544}
   playerName: Player
   playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &261235204590799262
@@ -330,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.033333335
+  m_SendInterval: 1
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -480,27 +481,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5064972274359854231, guid: a61d8fef381bf9c4ba921b88a51d4e32,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064972274359854231, guid: a61d8fef381bf9c4ba921b88a51d4e32,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064972274359854231, guid: a61d8fef381bf9c4ba921b88a51d4e32,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5064972273619896996, guid: a61d8fef381bf9c4ba921b88a51d4e32,
+    - target: {fileID: 5064972274851981697, guid: a61d8fef381bf9c4ba921b88a51d4e32,
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5064972274851981697, guid: a61d8fef381bf9c4ba921b88a51d4e32,
+    - target: {fileID: 5064972273619896996, guid: a61d8fef381bf9c4ba921b88a51d4e32,
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -513,3 +499,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1757967834005022285}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6786901672417007544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5064972273874973173, guid: a61d8fef381bf9c4ba921b88a51d4e32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1757967834005022285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

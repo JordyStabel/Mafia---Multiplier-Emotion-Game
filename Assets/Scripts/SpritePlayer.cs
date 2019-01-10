@@ -6,12 +6,21 @@ public class SpritePlayer : NetworkBehaviour
 {
     float speed = 5f;
     public Text playerNameText;
+    public Slider slider;
 
     [SyncVar]
     public string playerName = "Player";
 
     [SyncVar]
     public Color playerColor = Color.white;
+
+    // The Alldex2Slider instance
+    public Affdex2Slider Affdex2Slider { get { return Affdex2Slider.Instance; } }
+
+    [SyncVar]
+    private float emotionValue = 0.5f;
+
+    private float timeLeft = 1f;
 
     public void OnGUI()
     {
@@ -34,6 +43,8 @@ public class SpritePlayer : NetworkBehaviour
         transform.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0f);
         SpriteRenderer render = GetComponent<SpriteRenderer>();
         render.color = playerColor;
+        
+        this.transform.parent = GameObject.Find("BarContainer").transform;
     }
 
     // Start is called before the first frame update
@@ -50,6 +61,19 @@ public class SpritePlayer : NetworkBehaviour
     void Update()
     {
         //playerNameText.transform.position = transform.position;
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            emotionValue = Affdex2Slider.EmotionValue;
+            CmdChangeEmotion(emotionValue);
+
+            CmdChangeName(Affdex2Slider.EmotionValue.ToString());
+            timeLeft = 1f;
+        }
+
+        
+        //Affdex2Slider.EmotionValue = 0.5f;
 
         #region Replaced with Movement script
 
@@ -70,6 +94,26 @@ public class SpritePlayer : NetworkBehaviour
         //    transform.Translate(Vector3.down * Time.deltaTime * speed);
 
         #endregion
+    }
+
+    [Command]
+    public void CmdChangeEmotion(float value)
+    {
+        emotionValue = value;
+        slider.value = value;
+        //Affdex2Slider.EmotionValue = emotionValue;
+        // Change slider
+
+        RpcChangeEmotion(value);
+    }
+
+    [ClientRpc]
+    public void RpcChangeEmotion(float value)
+    {
+        emotionValue = value;
+        slider.value = value;
+        //Affdex2Slider.EmotionValue = emotionValue;
+        // Change slider
     }
 
     [Command]

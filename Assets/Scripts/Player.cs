@@ -61,12 +61,13 @@ public class Player : NetworkBehaviour
 
     public void Update()
     {
+        //CmdChangeName((Affdex2Slider.emotionValue + " - " + playerName));
+        Debug.Log("Fired");
+
         // Check if the current client is the 'owner' of this object
         if (isLocalPlayer == true)
         {
             //emotionValue = Affdex2Slider.emotionValue;
-
-           
 
             //// Testing
             //timeLeft -= Time.deltaTime;
