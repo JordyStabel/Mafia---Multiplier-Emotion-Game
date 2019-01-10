@@ -11,6 +11,13 @@ public class Player : NetworkBehaviour
     public Image playerGraphics;
     public Text playerNameText;
 
+    // The Alldex2Slider instance
+    public Affdex2Slider Affdex2Slider { get { return Affdex2Slider.Instance; } }
+
+    private static float emotionValue;
+
+    private float timeLeft = 1f;
+
     [SyncVar]
     public string playerName = "Player";
 
@@ -57,6 +64,18 @@ public class Player : NetworkBehaviour
         // Check if the current client is the 'owner' of this object
         if (isLocalPlayer == true)
         {
+            //emotionValue = Affdex2Slider.emotionValue;
+
+           
+
+            //// Testing
+            //timeLeft -= Time.deltaTime;
+            //if (timeLeft < 0)
+            //{
+            //    CmdChangeName(Random.Range(0, 100) + "-" + playerName);
+            //    timeLeft = 1f;
+            //}
+
             // Move to the right
             if (Input.GetKey(KeyCode.D))
                 playerContainer.transform.Translate(Vector3.right * Time.deltaTime * 50f);
@@ -71,11 +90,18 @@ public class Player : NetworkBehaviour
 
             // Move down
             if (Input.GetKey(KeyCode.S))
+            {
                 playerContainer.transform.Translate(Vector3.down * Time.deltaTime * 50f);
+                Debug.Log("Fired");
+            }
 
             // Debug
             if (Input.GetKey(KeyCode.Space))
-                Debug.Log("Space pressed");
+            {
+                Debug.Log("Fired");
+                CmdChangeName((Affdex2Slider.emotionValue + " - " + playerName));
+                Debug.Log("Fired");
+            }
         }
     }
 

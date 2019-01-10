@@ -19,7 +19,6 @@ public class SpritePlayer : NetworkBehaviour
         {
             // Some if this might need to get moved outside the if statement, otherwise not all players will see everything
             playerName = GUI.TextField(new Rect(25, Screen.height - 40, 100, 30), playerName);
-            GUI.Label(new Rect(transform.position.x, transform.position.y, 100, 20), playerName);
             if (GUI.Button(new Rect(130, Screen.height - 40, 80, 30), "Change"))
             {
                 if (isLocalPlayer)
@@ -32,6 +31,7 @@ public class SpritePlayer : NetworkBehaviour
 
     void OnEnable()
     {
+        transform.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0f);
         SpriteRenderer render = GetComponent<SpriteRenderer>();
         render.color = playerColor;
     }
@@ -49,6 +49,8 @@ public class SpritePlayer : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //playerNameText.transform.position = transform.position;
+
         #region Replaced with Movement script
 
         //// Move to the right
