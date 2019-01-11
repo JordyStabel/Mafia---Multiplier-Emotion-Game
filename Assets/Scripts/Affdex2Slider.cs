@@ -74,6 +74,8 @@ public class Affdex2Slider : ImageResultsListener
         }
         else
         {
+            Debug.Log("Fired");
+
             var emotionValues = faces[0].Emotions;
             emotionValue = emotionValues[Emotion];
             slider.value = emotionValue;

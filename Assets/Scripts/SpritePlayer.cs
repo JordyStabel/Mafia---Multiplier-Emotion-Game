@@ -43,8 +43,9 @@ public class SpritePlayer : NetworkBehaviour
         transform.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0f);
         SpriteRenderer render = GetComponent<SpriteRenderer>();
         render.color = playerColor;
-        
-        this.transform.parent = GameObject.Find("BarContainer").transform;
+
+        //this.transform.parent = GameObject.Find("BarContainer").transform;
+        this.transform.SetParent(GameObject.Find("BarContainer").transform);
     }
 
     // Start is called before the first frame update
@@ -68,7 +69,7 @@ public class SpritePlayer : NetworkBehaviour
             emotionValue = Affdex2Slider.EmotionValue;
             CmdChangeEmotion(emotionValue);
 
-            CmdChangeName(Affdex2Slider.EmotionValue.ToString());
+            //CmdChangeName(Affdex2Slider.EmotionValue.ToString());
             timeLeft = 1f;
         }
 
